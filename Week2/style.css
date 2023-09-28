@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Oswald&display=swap');
 /* Reset Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     color: #505050;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 /* Header Styles */
@@ -12,6 +15,8 @@ header {
     color: #fff;
     text-align: center;
     padding: 20px;
+    position:fixed;
+    width: 100%;
 }
 
 .headeraH1 {
@@ -31,6 +36,8 @@ header {
 
 
 /* Navigation Styles */
+
+
 nav ul {
     background-color: #333;
     color: #fff;
@@ -186,4 +193,12 @@ footer a:hover {
 
 footer p {
     margin: 10px 0 0;
+}
+/* Highliting the current page */
+.currentPage {
+    color: #7f0b68;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
 }
