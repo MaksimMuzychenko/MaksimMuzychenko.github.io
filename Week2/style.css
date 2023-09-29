@@ -157,6 +157,7 @@ main h3 {
     margin-top: 30px;
     margin-bottom: 10px;
     font-size: large;
+    text-decoration:underline;
    
 }
 
@@ -166,7 +167,7 @@ main h3 {
     background-color: #87089a;
     font-size: 24px;
     color: #ffffff;
-    text-decoration: underline;
+    text-decoration: none;
     text-transform: uppercase;
     border-radius: 5px;
     font-weight: bold;
