@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="Week3/script.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>Gallery - Wanderlust Voyages</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-   .gallery-container {
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin-top: 40px;
-  }
-
-   .gallery-container img {
-	width: 24%;
-	margin-bottom: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -39,17 +25,43 @@
   
   <main class="services">
       <h1>Gallery</h1>
-
-		<div class="gallery-container">
-			<img src="images/1.jpeg" alt="Spa Image 1">
-			<img src="images/2.jpeg" alt="Spa Image 2">
-			<img src="images/3.jpeg" alt="Spa Image 3">
-			<img src="images/4.jpeg" alt="Spa Image 4">
-			<img src="images/5.jpeg" alt="Spa Image 5">
-			<img src="images/6.jpeg" alt="Spa Image 6">
-			<img src="images/7.jpeg" alt="Spa Image 7">
-			<img src="images/8.jpeg" alt="Spa Image 7">
-		</div>
+   <div class="container">
+      <div class="MySlide" style="display: block;">
+        <div class="numbertext">1/8</div>
+          <img src="images/17.jpeg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide"style="display:none";>
+        <div class="numbertext">2/8</div>
+          <img src="images/10.jpeg" alt="Spa Image 1">
+        </div>
+      <div class="MySlide">
+        <div class="numbertext">3/8 </div>
+          <img src="images/11.jpeg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide">
+        <div class="numbertext"> 4/8</div>
+          <img src="images/12.jpeg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide">
+        <div class="numbertext">5/8</div>
+          <img src="images/13.jpg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide">
+        <div class="numbertext">6/8</div>
+          <img src="images/14.jpeg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide">
+        <div class="numbertext">7/8</div>
+          <img src="images/15.jpeg" alt="Spa Image 1">
+      </div>
+      <div class="MySlide">
+        <div class="numbertext"> 8/8</div>
+          <img src="images/16.jpeg" alt="Spa Image 1">
+      </div>
+      <a class = "prev", onclick="prevSlide(1)"> &#10094 </a>
+      <a class = "next", onclick="nextSlide(1)"> &#10095 </a>
+    
+    </div>  
    <!-- Call to Action -->
    <section class="cta-container">
     <h2>Ready to Experience Our Services?</h2>
@@ -67,5 +79,32 @@
     <p >&copy; 2024 Wanderlust Voyages | Travel Agency. All rights reserved.</p>
   </footer>
  </div>
+ <script>
+  let currentSlideIndex = 1;
+showCurrentSlide(currentSlideIndex);
+function nextSlide(n){
+    showCurrentSlide(currentSlideIndex += n);
+}
+function prevSlide(n){
+    showCurrentSlide(currentSlideIndex -=n);
+}
+function currentSlide(n){
+    showCurrentSlide(currentSlideIndex = n)
+}
+
+function showCurrentSlide(n){
+    let allSlides = document.getElementsByClassName("MySlide");
+    if(currentSlideIndex>allSlides.length){
+        currentSlideIndex = 1;
+    }
+    if(currentSlideIndex<1){
+        currentSlideIndex = allSlides.length;
+    }
+    for(let i=0; i<allSlides.length; i++){
+        allSlides[i].style.display="none";
+    }
+    allSlides[currentSlideIndex-1].style.display="block";
+}
+ </script>
 </body>
 </html>
