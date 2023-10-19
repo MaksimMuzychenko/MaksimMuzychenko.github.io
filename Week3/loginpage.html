@@ -9,7 +9,7 @@
 </head>
 
 
-<body>
+<body class="bg">
     <div class="login">
 <form id="loginform">
     <h1>Registration</h1>
@@ -26,17 +26,15 @@
 <label for= "confirm"> Confirm Password</label>
 <input type="password" id="confirm" name="password" placeholder="Password">
 <div class="error" id="confirmError"></div>
-<button type="submit">Submit</Button>
+<button type="submit">Submit</button>
 </div>
 </form>
 
 </div>
 <script>
    const form =document.getElementById("loginform")
-    form.addEventListener("submit", function(formSumission){
-    
+    form.addEventListener("submit", function(formSubmission){
     let validity = true;
-    
     //Getting references to the input elements and the error messages
     const username = document.getElementById("username")
     const usernameError = document.getElementById("usernameError")
@@ -49,53 +47,60 @@
     //Checking validity for the username
     if(username.value === ""){
         usernameError.textContent = "Username is required"
-        usernameInput.classList.remove("validity");
+        username.classList.remove("validInput");
         validity = false;
         }
         else {
-            usernameError.textContent="";
-            usernameInput.classList.add("validity");
+            username.addEventListener("input", function () {
+            usernameError.textContent = "";
+            username.classList.add("validInput");
+        })
+           
 
     }
-    //Checking validity for the email
-    let emailFormat=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  
+    const emailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (email.value ==="" ) {
         emailError.textContent ="Email is required"
         validity = false;
     }
-    if(email.value.match(emailFormat))
-    {
-        emailError.textContent="";
+    if (!email.value.match(emailFormat)) {
+        emailError.textContent = "Invalid email format";
+        validity =false;
+    } else {
+        emailError.textContent = ""; 
     }
-    else{
-        emailError.textContent="Invalid email format"
-        validity = false;
-    }
+ 
+
     if(password.value === ""){
         passwordError.textContent = "Password is required"
         validity = false;
     }
-    else{
-        passwordError.textContent="";
-        
-    }
-    if(password.value < 8){
-        passwordError.textContent = "Password must be at least 8 characters"
+    if (password.value.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters";
         validity = false;
-    }
-    else{
-        passwordError.textContent="";
+    } else {
+        passwordError.textContent = "";
     }
 
-    if(confirmPassword.value === ""){
-        confirmPasswordError.textContent = "Confirm Password is required"
-        validity=false;
+
+    if(confirmPassword.value !== password.value){
+        confirmPasswordError.textContent = "Passwords must match"
+        confirmPasswordError.classList.remove("validInput")
+        validity = false;
+    
     }
+    else{
+        confirmPasswordError.textContent=""
+        confirmPasswordError.classList.add("validInput")
+    }
+
 
     if(!validity){
-        formSubmission.preventDefault()
+        formSubmission.preventDefault();
+        return false;
     }
-});
+})
 </script>
 </body>
 
