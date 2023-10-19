@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="login">
+<form id="loginform">
+    <h1>Registration</h1>
+    <div class ="input-control">
+<label for="username">Username</label>
+<input type="text" id="username" name="username" placeholder="Username">
+<div class="error" id="usernameError"></div>
+<label for="email">Email</label>
+<input type="text" id="email" name="email" placeholder="Email">
+<div class="error" id="emailError"></div>
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Password">
+<div class="error" id="passwordError"></div>
+<label for= "confirm"> Confirm Password</label>
+<input type="password" id="confirm" name="password" placeholder="Password">
+<div class="error" id="confirmError"></div>
+<button type="submit">Submit</Button>
+</div>
+</form>
+
+</div>
+<script>
+   const form =document.getElementById("loginform")
+    form.addEventListener("submit", function(formSumission){
+    
+    let validity = true;
+    
+    //Getting references to the input elements and the error messages
+    const username = document.getElementById("username")
+    const usernameError = document.getElementById("usernameError")
+    const email = document.getElementById("email")
+    const emailError = document.getElementById("emailError")
+    const password = document.getElementById("password")
+    const passwordError = document.getElementById("passwordError")
+    const confirmPassword = document.getElementById("confirm")
+    const confirmPasswordError = document.getElementById("confirmError")
+    //Checking validity for the username
+    if(username.value === ""){
+        usernameError.textContent = "Username is required"
+        usernameInput.classList.remove("validity");
+        validity = false;
+        }
+        else {
+            usernameError.textContent="";
+            usernameInput.classList.add("validity");
+
+    }
+    //Checking validity for the email
+    let emailFormat=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    if (email.value ==="" ) {
+        emailError.textContent ="Email is required"
+        validity = false;
+    }
+    if(email.value.match(emailFormat))
+    {
+        emailError.textContent="";
+    }
+    else{
+        emailError.textContent="Invalid email format"
+        validity = false;
+    }
+    if(password.value === ""){
+        passwordError.textContent = "Password is required"
+        validity = false;
+    }
+    else{
+        passwordError.textContent="";
+        
+    }
+    if(password.value < 8){
+        passwordError.textContent = "Password must be at least 8 characters"
+        validity = false;
+    }
+    else{
+        passwordError.textContent="";
+    }
+
+    if(confirmPassword.value === ""){
+        confirmPasswordError.textContent = "Confirm Password is required"
+        validity=false;
+    }
+
+    if(!validity){
+        formSubmission.preventDefault()
+    }
+});
+</script>
+</body>
+
+
+</html>
