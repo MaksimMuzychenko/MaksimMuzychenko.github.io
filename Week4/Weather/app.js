@@ -30,10 +30,11 @@ xml.onload = function(){
            }
         }
 }
-})
 try{
     xml.send();
 }catch(error){
     alert("NETWORK ERROR");
 }
+})
+
 
