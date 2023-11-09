@@ -6,8 +6,12 @@ body, html {
     html { 
     scroll-behavior: smooth; 
     } 
-    header { 
+body{
     background-color: aqua;
+    color: #43016f;
+}
+    header { 
+    background-color: rgb(242, 255, 0);
     width: 800px; 
     display: flex; 
     justify-content: space-between; 
